@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+		<title>Animated Gredient Shadow</title>
+
+		<style type="text/css">
+
+.box,
+.box * {
+	box-sizing: border-box;
+}
+
+.box {
+	position: relative;
+}
+
+.box::before,
+.box::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	margin: -2px;
+	background-image: linear-gradient(to bottom right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+	background-size: 200% 200%;
+	border-radius: inherit;
+	animation: bg-animation 8s linear infinite forwards;
+	z-index: -1;
+}
+
+.box::before {
+	margin: -8px;
+	filter: blur(8px);
+	z-index: -2;
+}
+
+@keyframes bg-animation {
+	to {
+		background-position: 100% 100%;
+	}
+}
+
+
+/* For demo only */
+
+body {
+	margin: 0;
+	background: #000;
+	color: #fafafa;
+	font-family: sans-serif;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	background: linear-gradient(30deg, #240229, #000);
+	z-index: -1;
+}
+
+.box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 8vmin 12vmin;
+	background: none;
+	border-radius: 8vmin;
+	transform: translate(-50%, -50%);
+}
+
+.text {
+	margin: 0;
+	font-size: 4vmin;
+	line-height: 3;
+	font-weight: normal;
+	letter-spacing: 4vmin;
+	text-transform: uppercase;
+	border-radius: inherit;
+	text-align: center;
+	text-shadow: 0 0 1.5vmin rgba(255, 255, 255, 0.75), 0 0 3vmin rgba(255, 255, 255, 0.75);
+}
+
+.text > span {
+	white-space: nowrap;
+	border-radius: inherit;
+}
+
+.text > span:not(.blend) {
+	position: relative;
+	z-index: 1;
+}
+
+.blend {
+	color: #fff;
+	mix-blend-mode: darken;
+}
+
+.blend::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	background: #000;
+	border-radius: inherit;
+	z-index: -1;
+}
+
+
+.SmokyText {
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+}
+
+.SmokyText > span {
+	position: relative;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 3vmin;
+	font-weight: bold;
+	letter-spacing: 10px;
+	text-transform: uppercase;
+	animation: SmokyText 4s linear infinite;
+}
+
+.SmokyText > span:nth-child(1) {
+	animation-delay: 0s;
+}
+.SmokyText > span:nth-child(2) {
+	animation-delay: 0.1s;
+}
+.SmokyText > span:nth-child(3) {
+	animation-delay: 0.2s;
+}
+.SmokyText > span:nth-child(4) {
+	animation-delay: 0.3s;
+}
+.SmokyText > span:nth-child(5) {
+	animation-delay: 0.4s;
+}
+.SmokyText > span:nth-child(6) {
+	animation-delay: 0.5s;
+}
+.SmokyText > span:nth-child(7) {
+	animation-delay: 0.6s;
+}
+
+@keyframes SmokyText {
+	0% {
+		filter: blur(0);
+	}
+	60% {
+		filter: blur(15px);
+	}
+	80% {
+		filter: blur(0);
+	}
+	100% {
+		filter: blur(0);
+	}
+}
+
+#typewriter {
+  top: 90%;
+	padding: 30px;
+	font-size: 15px;
+	text-align: center;
+-webkit-animation: color-change 20s infinite;
+   -moz-animation: color-change 20s infinite;
+     -o-animation: color-change 20s infinite;
+    -ms-animation: color-change 20s infinite;
+        animation: color-change 20s infinite;
+}
+
+
+.blinking-star {
+  position: absolute;
+  color: #ffffff;
+  top:30%;
+  left:50%;
+  width: 100px;
+  text-align: center;
+  margin-left: -50px;
+  font-size: 5px;
+  object-position: center;
+  transform: translate(-500%, -50%);
+}
+
+@-webkit-keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blinking-star {
+  -webkit-animation: blink-animation 1s infinite, scale-animation 1s infinite;
+  animation: blink-animation 1s infinite, scale-animation 1s infinite;
+}
+
+@-webkit-keyframes scale-animation {
+  0% {
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@keyframes scale-animation {
+  0% {
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0.5, 0.5);
+  }
+}
+
+		</style>
+
+		<style>
+body {
+  margin: 0;
+  background: #000;
+}
+canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+body > :not(canvas) {
+	pointer-events: none;
+}
+    </style>
+
+	</head>
+
+	<body>
+
+		<canvas id="canvas"></canvas>
+	  
+	  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<i class="blinking-star fa fa-star"></i>
+
+		<div class="box">
+			<p class="text"><span>HAPPY</span><br><span class="blend">
+			  BIRTHDAY
+			</span><br><span> CHANDRIMA </span></p>
+			  
+			</div>
+			
+<div class="SmokyText">
+
+  
+  </br>
+	<span>Many</span>
+	<span>Many</span>
+	<span>Happy</span>
+	<span>Returns</span>
+	<span>of</span>
+	<span>the</span>
+	<span>Day</span>
+	</br>
+	
+		
+		<script type="text/javascript">
+(function() {
+
+	// Error Tracking
+	window.onerror = function(errorMsg, url, lineNumber) {
+		alert("JavaScript Error!\n\nMassage: " + errorMsg + "\nURL: " + url + "\nLine: " + lineNumber + "\n");
+	};
+
+})();
+</script>
+
+<div id="typewriter"></div>
+
+<script type="text/javascript">
+
+var tw = document.getElementById("typewriter");
+var quotes = [
+"Like a brighting star,",
+"I wish you shine always, dear.",
+"Doesn't matter where I am,",
+"I'll always applaud.",
+"All your achievements, and You.",
+];
+var quote = quotes[0];
+var b = 0;
+var c = 0;
+
+var tick = function() {
+	tw.innerHTML = quote.substring(0, c);
+	c++;
+	if (c < quote.length) {
+		setTimeout(tick, 50);
+	} else {
+		c = 0;
+		b++;
+		if (b >= quotes.length) b = 0;
+		quote = quotes[b];
+		setTimeout(tick, 3000);
+	}
+};
+
+tick();
+
+</script>
+
+
+</div>
+
+    <script>
+var requestAnimFrame = window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  function(callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function calculateDistance(p1x, p1y, p2x, p2y) {
+  return Math.sqrt(Math.pow(p1x - p2x, 2) + Math.pow(p1y - p2y, 2));
+}
+
+var canvas = document.getElementById('canvas'),
+  ctx = canvas.getContext('2d'),
+  cw = window.innerWidth * window.devicePixelRatio,
+  ch = window.innerHeight * window.devicePixelRatio,
+  fireworks = [],
+  particles = [],
+  hue = 120,
+  limiterTotal = 5,
+  mouseLimiterTick = 0,
+  touchLimiterTicks = [],
+  timerTotal = 20,
+  timerTick = 0,
+  mousedown = false,
+  mx,
+  my,
+  touches = [];
+
+canvas.width = cw;
+canvas.height = ch;
+
+window.addEventListener('resize', function() {
+  cw = window.innerWidth * window.devicePixelRatio;
+  ch = window.innerHeight * window.devicePixelRatio;
+  canvas.width = cw;
+  canvas.height = ch;
+});
+
+function Firework(sx, sy, tx, ty) {
+  this.x = sx;
+  this.y = sy;
+  this.sx = sx;
+  this.sy = sy;
+  this.tx = tx;
+  this.ty = ty;
+  this.distanceToTarget = calculateDistance(sx, sy, tx, ty);
+  this.distanceTraveled = 0;
+  this.coordinates = [];
+  this.coordinateCount = 3;
+  while (this.coordinateCount--) {
+    this.coordinates.push([this.x, this.y]);
+  }
+  this.angle = Math.atan2(ty - sy, tx - sx);
+  this.speed = 2;
+  this.acceleration = 1.05;
+  this.brightness = random(50, 70);
+  this.targetRadius = 1;
+}
+
+Firework.prototype.update = function(index) {
+  this.coordinates.pop();
+  this.coordinates.unshift([this.x, this.y]);
+
+  if (this.targetRadius < 8) {
+    this.targetRadius += 0.3;
+  } else {
+    this.targetRadius = 1;
+  }
+
+  this.speed *= this.acceleration;
+
+  var vx = Math.cos(this.angle) * this.speed,
+    vy = Math.sin(this.angle) * this.speed;
+  this.distanceTraveled = calculateDistance(this.sx, this.sy, this.x + vx, this.y + vy);
+
+  if (this.distanceTraveled >= this.distanceToTarget) {
+    createParticles(this.tx, this.ty);
+    fireworks.splice(index, 1);
+  } else {
+    this.x += vx;
+    this.y += vy;
+  }
+}
+
+Firework.prototype.draw = function() {
+  ctx.beginPath();
+  ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+  ctx.lineTo(this.x, this.y);
+  ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(this.tx, this.ty, this.targetRadius, 0, Math.PI * 2);
+  ctx.stroke();
+}
+
+function Particle(x, y) {
+  this.x = x;
+  this.y = y;
+  this.coordinates = [];
+  this.coordinateCount = 5;
+  while (this.coordinateCount--) {
+    this.coordinates.push([this.x, this.y]);
+  }
+  this.angle = random(0, Math.PI * 2);
+  this.speed = random(1, 10);
+  this.friction = 0.95;
+  this.gravity = 1;
+  this.hue = random(hue - 50, hue + 50);
+  this.brightness = random(50, 80);
+  this.alpha = 1;
+  this.decay = random(0.015, 0.03);
+}
+
+Particle.prototype.update = function(index) {
+  this.coordinates.pop();
+  this.coordinates.unshift([this.x, this.y]);
+  this.speed *= this.friction;
+  this.x += Math.cos(this.angle) * this.speed;
+  this.y += Math.sin(this.angle) * this.speed + this.gravity;
+  this.alpha -= this.decay;
+
+  if (this.alpha <= this.decay) {
+    particles.splice(index, 1);
+  }
+}
+
+Particle.prototype.draw = function() {
+  ctx.beginPath();
+  ctx.moveTo(this.coordinates[this.coordinates.length - 1][0], this.coordinates[this.coordinates.length - 1][1]);
+  ctx.lineTo(this.x, this.y);
+  ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+  ctx.stroke();
+}
+
+function createParticles(x, y) {
+  var particleCount = 30;
+  while (particleCount--) {
+    particles.push(new Particle(x, y));
+  }
+}
+
+function loop() {
+  requestAnimFrame(loop);
+
+  hue = random(0, 360);
+
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+  ctx.fillRect(0, 0, cw, ch);
+  ctx.globalCompositeOperation = 'lighter';
+
+  var i = fireworks.length;
+  while (i--) {
+    fireworks[i].draw();
+    fireworks[i].update(i);
+  }
+
+  var i = particles.length;
+  while (i--) {
+    particles[i].draw();
+    particles[i].update(i);
+  }
+
+  if (timerTick >= timerTotal) {
+    if (!mousedown && !touches.length) {
+      fireworks.push(new Firework(cw / 2, ch, random(0, cw), random(0, ch / 2)));
+      timerTick = 0;
+    }
+  } else {
+    timerTick++;
+  }
+
+  if (mouseLimiterTick >= limiterTotal) {
+    if (mousedown) {
+      fireworks.push(new Firework(cw / 2, ch, mx * window.devicePixelRatio, my * window.devicePixelRatio));
+      mouseLimiterTick = 0;
+    }
+  } else {
+    mouseLimiterTick++;
+  }
+
+  for (var i = 0; i < touches.length; i++) {
+    var t = touches[i];
+    if (!(t.identifier in touchLimiterTicks)) {
+      touchLimiterTicks[t.identifier] = 0;
+    }
+    if (touchLimiterTicks[t.identifier] >= limiterTotal) {
+      fireworks.push(new Firework(cw / 2, ch, t.pageX * window.devicePixelRatio, t.pageY * window.devicePixelRatio));
+      touchLimiterTicks[t.identifier] = 0;
+    } else {
+      touchLimiterTicks[t.identifier]++;
+    }
+  }
+}
+
+canvas.addEventListener('mousedown', function(e) {
+  e.preventDefault();
+  mousedown = true;
+});
+canvas.addEventListener('mousemove', function(e) {
+  mx = e.pageX;
+  my = e.pageY;
+});
+canvas.addEventListener('mouseup', function(e) {
+  mousedown = false;
+});
+
+canvas.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  touches = e.touches;
+});
+canvas.addEventListener('touchmove', function(e) {
+  touches = e.touches;
+});
+canvas.addEventListener('touchend', function(e) {
+  touches = e.touches;
+});
+
+window.onload = loop;
+    </script>
+
+	</body>
+
+</html>
